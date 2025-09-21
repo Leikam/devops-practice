@@ -1,0 +1,30 @@
+user:
+  isAdmin: false
+  name: Dmitry
+  age: 37
+  jobTitle: 'team lead'
+  skills:
+    - name: Javascript
+      level: 5
+      description: |
+        какой-то очень полезный скилл,
+        который применяется, когда все другие 
+        скиллы отказались работать или не подошли
+    - name: Java
+      level: 4
+      description: |
+        какой-то очень полезный скилл,
+        который применяется, когда все другие 
+        скиллы отказались работать или не подошли
+  address:
+    country: Russia
+    city: SPB
+    street: Mikluha
+    house: 1
+  animals:
+    - name: 'Kakodemon'
+      breed: 'french bulldog'
+      canMeow: false
+
+
+

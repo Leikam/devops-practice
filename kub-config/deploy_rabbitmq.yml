@@ -21,13 +21,29 @@ spec:
             - containerPort: 5672
           env:
             - name: SEED_USERNAME
-              value: dmitryl
+#              value: dmitryl
+              valueFrom:
+                secretKeyRef:
+                  name: rmq-secrets
+                  key: SEED_USERNAME
             - name: SEED_USER_PASSWORD
-              value: test
+#              value: test
+              valueFrom:
+                secretKeyRef:
+                  name: rmq-secrets
+                  key: SEED_USER_PASSWORD
             - name: RABBITMQ_DEFAULT_USER
-              value: dmitryl
+#              value: dmitryl
+              valueFrom:
+                secretKeyRef:
+                  name: rmq-secrets
+                  key: RABBITMQ_DEFAULT_USER
             - name: RABBITMQ_DEFAULT_PASS
-              value: test
+#              value: test
+              valueFrom:
+                secretKeyRef:
+                  name: rmq-secrets
+                  key: RABBITMQ_DEFAULT_PASS
           resources:
             limits:
               cpu: 500m

@@ -29,6 +29,8 @@ spec:
           env:
             - name: AMQP_EXCHANGE
               value: test
+            - name: AMQP_HOSTNAME
+              value: rabbitmq-cluster-ip
             - name: AMQP_USER
               valueFrom:
                 secretKeyRef:
@@ -39,8 +41,6 @@ spec:
                 secretKeyRef:
                   key: SEED_USER_PASSWORD
                   name: rmq-secrets
-            - name: AMQP_HOSTNAME
-              value: 192.168.194.174
       volumes:
         - name: conv-api-volume
           persistentVolumeClaim:

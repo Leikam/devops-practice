@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      module: rabbitmq
+  template:
+    metadata:
+      name: rabbit
+      labels:
+        module: rabbitmq
+    spec:
+      containers:
+        - name: rabbit-container
+          imagePullPolicy: IfNotPresent
+          image: rabbitmq:4.2.2-management
+          ports:
+            - containerPort: 5672
+          env:
+            - name: SEED_USERNAME
+              value: dmitryl
+            - name: SEED_USER_PASSWORD
+              value: test
+            - name: RABBITMQ_DEFAULT_USER
+              value: dmitryl
+            - name: RABBITMQ_DEFAULT_PASS
+              value: test
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: rabbitmq-volume
+              mountPath: /var/lib/rabbitmq
+      volumes:
+        - name: rabbitmq-volume
+          persistentVolumeClaim:
+            claimName: rabbitmq-pvc
